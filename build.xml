@@ -1,0 +1,40 @@
+<?xml version="1.0"?> 
+<project name="uebung05b demo project" default="run">
+
+	<property file="build.properties"/>
+	
+	<property name="target.classes" value="${target}/classes"/>
+	<property name="build.jar" value="${target}/jar"/>
+	
+	<target name="prepare" depends="clean" description="Erstellen build und Unterordner">
+				<mkdir dir="${target.classes}"/>
+				<mkdir dir="${target.jar}"/>
+			</target>
+	
+	
+    <target name="clean">
+    	<delete dir="build"/>
+    </target>
+
+    <target name="compile" depends="prepare">
+    	<property name="src" value="${target}/src"/>
+    	<javac srcdir="${src}" destdir="${target.classes}" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+    	<jar destfile="${target.jar}/Ponit2d.jar" basedir="${target.classes}">
+        					<manifest>
+        						<attribute name="Main-Class" value="at.fhj.itm.EntryPoint"/>
+        					</manifest>
+        				</jar>
+    </target>
+
+    <target name="run" depends="jar">
+    	<echo message="Attempting to run!" />
+    				<java jar="${target.jar}/Ponit2d.jar" output="results.txt" fork="true" >
+    		<arg line="distance 0 0 4 1"/>  
+    					</java>
+    </target>
+
+</project>
+

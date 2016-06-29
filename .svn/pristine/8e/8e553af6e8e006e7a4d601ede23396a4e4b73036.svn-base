@@ -1,0 +1,1 @@
+Ich habe zur Point2dTest noch die Tests testSetXY() und testtoString hinzugefügt um die jeweiligen Methoden zu testen

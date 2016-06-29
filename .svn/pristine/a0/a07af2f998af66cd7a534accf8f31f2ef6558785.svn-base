@@ -1,0 +1,89 @@
+package at.fhj.itm;
+
+public class Point3d extends Point2d{
+	private boolean debug;
+	private double x = 0;
+	private double y = 0;
+	private double z = 0;
+	private double erg;
+
+	public Point3d (double px, double py, double pz)
+	{ 
+		this.x = px;
+		this.y = py;
+		this.z = pz;
+	}
+
+	public Point3d () 
+	{		
+	}
+
+	public Point3d (Point3d pt) 
+	{	
+		x = pt.x;
+		y = pt.y;
+		z = pt.z;
+	}
+
+	public void dprint (String s) {
+		if (debug)
+			System.out.println("Debug: " + s);
+	}
+
+	public void setDebug (boolean b) {
+		debug = b;
+	}
+
+	public void setX(double px) {
+		dprint ("setX(): Changing value of X from " + x + " to " + px );
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setY(double py)  {
+		dprint ("setY(): Changing value of Y from " + y + " to " + py );
+	}
+
+	public double getY() {
+		return y;
+	}
+	
+	public void setZ(double pz)  {
+		dprint ("setZ(): Changing value of Z from " + z + " to " + pz );
+	}
+
+	public double getZ() {
+		return z;
+	}
+
+	public void setXYZ(double px, double py, double pz) {
+		x = px;
+		y = py;
+		z = pz;
+	}
+
+	public double distanceFrom (Point3d pt) {
+		double xx = x - pt.x;
+		
+		double yy = y - pt.y;
+		
+		double zz = z - pt.z;
+		
+		erg = Math.sqrt(Math.pow(xx, 2) + Math.pow(yy, 2) + Math.pow(zz, 2));
+		
+		return erg;
+	}
+
+	public double distanceFromOrigin () {
+		erg = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+		
+		return erg;
+	}
+
+	public String toString() {
+		String point = "x = " + x + ", y = " + y + " & z = " + z;
+		return point;
+	}	
+}

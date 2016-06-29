@@ -1,0 +1,81 @@
+package at.fhj.itm;
+class Point2d {
+	private boolean debug;
+	private double x = 0;
+	private double y = 0;
+	private double erg;
+
+	public Point2d (double px, double py)
+	{ 
+		this.x = px;
+		this.y = py;
+	}
+
+	public Point2d () 
+	{		
+	}
+
+	public Point2d (Point2d pt) 
+	{	
+		x = pt.x;
+		y = pt.y;
+	}
+
+	public void dprint (String s) {
+		if (debug)
+			System.out.println("Debug: " + s);
+	}
+
+	public void setDebug (boolean b) {
+		debug = b;
+	}
+
+	public void setX(double px) {
+		dprint ("setX(): Changing value of X from " + x + " to " + px );
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setY(double py)  {
+		dprint ("setY(): Changing value of Y from " + y + " to " + py );
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setXY(double px, double py) {
+		x = px;
+		y = py;
+	}
+
+	public double distanceFrom (Point2d pt) {
+		double xx = x - pt.x;
+//		if (xx < 0) {
+//		    xx *= -1;
+//		}
+		
+		double yy = y - pt.y;
+//		if (yy < 0) {
+//		    yy *= -1;
+//		}
+		
+		erg = Math.sqrt(Math.pow(xx, 2) + Math.pow(yy, 2));
+		
+		return erg;
+	}
+
+	public double distanceFromOrigin () {
+		erg = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+		
+		return erg;
+	}
+
+	public String toString() {
+		String point = "x = " + x + " & y = " + y;
+		return point;
+	}
+}
+
